@@ -131,10 +131,96 @@
         });
     }
 
+    // New menu functionality
+    function setupNewMenu() {
+        const toggle = document.querySelector(".sccf-nav-toggle");
+        const panel = document.getElementById("sccf-nav-panel");
+        const backdrop = document.getElementById("sccf-nav-backdrop");
+
+        if (!toggle || !panel || !backdrop) return;
+
+        const body = document.body;
+
+        function openMenu() {
+            toggle.setAttribute("aria-expanded", "true");
+            toggle.setAttribute("aria-label", "Close main menu");
+            panel.hidden = false;
+            backdrop.hidden = false;
+            panel.classList.add("is-open");
+            backdrop.classList.add("is-open");
+            body.style.overflow = "hidden";
+        }
+
+        function closeMenu() {
+            toggle.setAttribute("aria-expanded", "false");
+            toggle.setAttribute("aria-label", "Open main menu");
+            panel.classList.remove("is-open");
+            backdrop.classList.remove("is-open");
+            body.style.overflow = "";
+            window.setTimeout(function() {
+                panel.hidden = true;
+                backdrop.hidden = true;
+            }, 220);
+        }
+
+        function isOpen() {
+            return toggle.getAttribute("aria-expanded") === "true";
+        }
+
+        toggle.addEventListener("click", function() {
+            if (isOpen()) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        backdrop.addEventListener("click", function() {
+            if (isOpen()) closeMenu();
+        });
+
+        window.addEventListener("keydown", function(event) {
+            if (event.key === "Escape" && isOpen()) {
+                closeMenu();
+            }
+        });
+
+        panel.addEventListener("click", function(event) {
+            const link = event.target.closest("a");
+            if (!link) return;
+            closeMenu();
+        });
+    }
+
+    // Enhanced smooth scroll for new menu links
+    function setupNewMenuScroll() {
+        // Handle all nav links (both desktop and mobile)
+        var navLinks = document.querySelectorAll('.sccf-nav-link, .sccf-nav-panel-item a, .sccf-nav-cta-chip');
+        navLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                var href = this.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    var targetSelector = href;
+                    smoothScrollTo(targetSelector);
+                    
+                    // Close mobile menu if open
+                    var panel = document.getElementById('sccf-nav-panel');
+                    var toggle = document.querySelector('.sccf-nav-toggle');
+                    if (panel && toggle && toggle.getAttribute('aria-expanded') === 'true') {
+                        toggle.click();
+                    }
+                }
+            });
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         setupNavScrollButtons();
         setupMobileNav();
         setupOncoTalksCard();
         setupContactForm();
+        setupNewMenu();
+        setupNewMenuScroll();
     });
 })();

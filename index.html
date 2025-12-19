@@ -9,65 +9,147 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <header class="site-header" id="top">
-        <nav class="navbar" aria-label="Main navigation">
-            <div class="navbar-inner">
-                <a href="#top" class="navbar-logo" aria-label="Suchitra Cancer Care Foundation home">
-                    <div class="navbar-logo-wrapper">
-                        <img src="logo.jpg" alt="Suchitra Cancer Care Foundation logo" class="navbar-logo-img" />
-                        <div class="navbar-brand-text">
-                            <span class="navbar-brand-title">Suchitra Cancer Care Foundation</span>
-                            <span class="navbar-brand-subtitle">SCCF was founded in loving memory of Late Suchitra Gauri, to support patients and caregivers with clear, trustworthy information.</span>
-                        </div>
-                    </div>
+    <div class="nav-wrapper">
+        <nav class="sccf-nav" aria-label="Primary navigation">
+            <a class="sccf-nav-logo-area" href="#top">
+                <span class="sccf-nav-logo-mark" aria-hidden="true"></span>
+                <span class="sccf-nav-logo-text">
+                    <span class="sccf-nav-title">Suchitra Cancer Care Foundation</span>
+                    <span class="sccf-nav-subtitle">Awareness · Guidance · Navigation</span>
+                </span>
+            </a>
+
+            <!-- Desktop / tablet links -->
+            <div class="sccf-nav-links" aria-label="Key sections">
+                <a class="sccf-nav-link sccf-nav-link--primary" href="#mission">
+                    <span>Mission</span>
                 </a>
-                <button class="navbar-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navbar-links-mobile">
-                    <span class="navbar-toggle-bar" aria-hidden="true"></span>
-                    <span class="navbar-toggle-bar" aria-hidden="true"></span>
-                    <span class="navbar-toggle-bar" aria-hidden="true"></span>
-                </button>
-                <div class="navbar-links" role="menubar">
-                    <a href="#mission" class="navbar-link" role="menuitem">Mission</a>
-                    <a href="#work" class="navbar-link" role="menuitem">Our Work</a>
-                    <a href="#awareness-prevention" class="navbar-link" role="menuitem">Awareness &amp; Prevention</a>
-                    <a href="#care-navigation" class="navbar-link" role="menuitem">Care Navigation Support</a>
-                    <a href="#founders" class="navbar-link" role="menuitem">Co-founders</a>
-                    <a href="#onco-talks" class="navbar-link" role="menuitem">Onco Talks</a>
-                    <a href="#cancer-sathi" class="navbar-link" role="menuitem">Cancer Sathi (Pilot)</a>
-                    <a href="#patients-families" class="navbar-link" role="menuitem">For Patients &amp; Families</a>
-                    <a href="#contact" class="navbar-link" role="menuitem">Contact</a>
-                    <div class="navbar-language-toggle" role="group" aria-label="Select language">
-                        <a href="/" class="lang-toggle lang-toggle-active" data-lang="en">EN</a>
-                        <a href="/hi/" class="lang-toggle" data-lang="hi">HI</a>
-                    </div>
-                    <button class="navbar-cta" type="button" data-scroll-target="#contact">Contact for Guidance</button>
-                </div>
+                <a class="sccf-nav-link sccf-nav-link--ghost" href="#work">
+                    <span>Our Work</span>
+                </a>
+                <a class="sccf-nav-link sccf-nav-link--ghost" href="#patients-families">
+                    <span>For Patients &amp; Families</span>
+                </a>
             </div>
-            <div class="navbar-links-mobile" id="navbar-links-mobile" hidden>
-                <a href="#mission" class="navbar-link-mobile">Mission</a>
-                <a href="#work" class="navbar-link-mobile">Our Work</a>
-                <a href="#awareness-prevention" class="navbar-link-mobile">Awareness &amp; Prevention</a>
-                <a href="#care-navigation" class="navbar-link-mobile">Care Navigation Support</a>
-                <a href="#founders" class="navbar-link-mobile">Co-founders</a>
-                <a href="#onco-talks" class="navbar-link-mobile">Onco Talks</a>
-                <a href="#cancer-sathi" class="navbar-link-mobile">Cancer Sathi (Pilot)</a>
-                <a href="#patients-families" class="navbar-link-mobile">For Patients &amp; Families</a>
-                <a href="#contact" class="navbar-link-mobile">Contact</a>
-                <div class="navbar-language-toggle-mobile" role="group" aria-label="Select language">
-                    <a href="/" class="lang-toggle-mobile lang-toggle-active" data-lang="en">EN</a>
-                    <a href="/hi/" class="lang-toggle-mobile" data-lang="hi">HI</a>
+
+            <!-- Right side -->
+            <div class="sccf-nav-actions">
+                <div class="sccf-nav-lang-toggle" aria-label="Select language">
+                    <button class="sccf-nav-lang-code sccf-nav-lang-code--active" type="button" aria-pressed="true">EN</button>
+                    <button class="sccf-nav-lang-code" type="button" aria-pressed="false">HI</button>
                 </div>
-                <button class="navbar-cta-mobile" type="button" data-scroll-target="#contact">Contact for Guidance</button>
+
+                <div class="sccf-nav-cta-chip" data-scroll-target="#contact">
+                    Contact for guidance
+                </div>
+
+                <!-- Mobile toggle -->
+                <button
+                    class="sccf-nav-toggle"
+                    type="button"
+                    aria-label="Open main menu"
+                    aria-expanded="false"
+                    aria-controls="sccf-nav-panel"
+                >
+                    <span class="sccf-nav-toggle-icon" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </span>
+                </button>
             </div>
         </nav>
-        <div class="disclaimer-banner" role="status" aria-label="Important disclaimer">
-            <div class="disclaimer-banner-inner">
-                <p><strong>SCCF is not a hospital, clinic, or diagnostic service.</strong> We focus on awareness, education, and guidance. For diagnosis or treatment, please consult a qualified healthcare professional.</p>
-            </div>
+    </div>
+
+    <!-- Mobile menu backdrop + panel -->
+    <div class="sccf-nav-panel-backdrop" id="sccf-nav-backdrop" hidden></div>
+
+    <div
+        class="sccf-nav-panel"
+        id="sccf-nav-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Main menu"
+        hidden
+    >
+        <p class="sccf-nav-panel-section-title">Navigate SCCF</p>
+        <ul class="sccf-nav-panel-list">
+            <li class="sccf-nav-panel-item sccf-nav-panel-item--primary">
+                <a href="#patients-families">
+                    <span class="label">I am a patient or caregiver</span>
+                    <span class="meta">Start here</span>
+                </a>
+            </li>
+            <li class="sccf-nav-panel-item">
+                <a href="#mission">
+                    <span class="label">Mission &amp; Story</span>
+                    <span class="meta">Who we are</span>
+                </a>
+            </li>
+            <li class="sccf-nav-panel-item">
+                <a href="#awareness-prevention">
+                    <span class="label">Awareness &amp; Prevention</span>
+                    <span class="meta">Learn &amp; prevent</span>
+                </a>
+            </li>
+            <li class="sccf-nav-panel-item">
+                <a href="#care-navigation">
+                    <span class="label">Care Navigation Support</span>
+                    <span class="meta">Understand pathways</span>
+                </a>
+            </li>
+            <li class="sccf-nav-panel-item">
+                <a href="#onco-talks">
+                    <span class="label">Onco Talks</span>
+                    <span class="meta">Doctor-led conversations</span>
+                </a>
+            </li>
+            <li class="sccf-nav-panel-item">
+                <a href="#cancer-sathi">
+                    <span class="label">Cancer Sathi (Pilot)</span>
+                    <span class="meta">Upcoming</span>
+                </a>
+            </li>
+            <li class="sccf-nav-panel-item">
+                <a href="#founders">
+                    <span class="label">Co-founders</span>
+                    <span class="meta">Team</span>
+                </a>
+            </li>
+            <li class="sccf-nav-panel-item">
+                <a href="#contact">
+                    <span class="label">Contact</span>
+                    <span class="meta">Write to SCCF</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="sccf-nav-panel-divider" aria-hidden="true"></div>
+
+        <ul class="sccf-nav-panel-list">
+            <li class="sccf-nav-panel-item sccf-nav-panel-item--danger">
+                <a href="#disclaimer">
+                    <span class="label">Important disclaimer</span>
+                    <span class="meta">Not a hospital or clinic</span>
+                </a>
+            </li>
+        </ul>
+
+        <p class="sccf-nav-panel-note" id="disclaimer">
+            <strong>SCCF does not provide medical diagnosis or treatment.</strong>
+            Information from Suchitra Cancer Care Foundation, including Onco Talks
+            and Cancer Sathi, is for awareness and guidance only. For emergencies or
+            treatment decisions, always consult a qualified healthcare professional
+            or your nearest hospital.
+        </p>
+    </div>
+
+    <div class="disclaimer-banner" role="status" aria-label="Important disclaimer">
+        <div class="disclaimer-banner-inner">
+            <p><strong>SCCF is not a hospital, clinic, or diagnostic service.</strong> We focus on awareness, education, and guidance. For diagnosis or treatment, please consult a qualified healthcare professional.</p>
         </div>
-    </header>
+    </div>
 
     <main id="main-content">
         <section class="hero" aria-labelledby="hero-title">
