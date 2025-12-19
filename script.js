@@ -227,6 +227,70 @@
         }
     }
 
+    // Scroll-based active section detection
+    function setupActiveSectionDetection() {
+        var sections = document.querySelectorAll('section[id]');
+        var navLinks = document.querySelectorAll('.sccf-nav-link, .sccf-nav-panel-item a');
+        
+        if (!sections.length || !navLinks.length) return;
+        
+        function updateActiveNav() {
+            var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            // Account for fixed nav height + padding
+            var navHeight = window.innerWidth >= 720 ? 120 : 100;
+            var offset = 100; // Offset to trigger active state before section reaches top
+            
+            var current = '';
+            
+            sections.forEach(function(section) {
+                var sectionTop = section.offsetTop;
+                var sectionHeight = section.clientHeight;
+                var sectionId = section.getAttribute('id');
+                
+                // Check if section is in viewport with offset
+                if (scrollPosition + offset >= sectionTop - navHeight && 
+                    scrollPosition + offset < sectionTop + sectionHeight - navHeight) {
+                    current = sectionId;
+                }
+            });
+            
+            // If at top of page, highlight first section or mission
+            if (scrollPosition < 200) {
+                var firstSection = sections[0];
+                if (firstSection) {
+                    current = firstSection.getAttribute('id');
+                }
+            }
+            
+            // Update active states
+            navLinks.forEach(function(link) {
+                link.classList.remove('active');
+                var href = link.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    var targetId = href.substring(1);
+                    if (targetId === current) {
+                        link.classList.add('active');
+                    }
+                }
+            });
+        }
+        
+        // Throttle scroll events for performance
+        var ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    updateActiveNav();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+        
+        // Initial check
+        updateActiveNav();
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         setupNavScrollButtons();
         setupMobileNav();
@@ -234,5 +298,6 @@
         setupContactForm();
         setupNewMenu();
         setupNewMenuScroll();
+        setupActiveSectionDetection();
     });
 })();
