@@ -195,7 +195,7 @@
     // Enhanced smooth scroll for new menu links
     function setupNewMenuScroll() {
         // Handle all nav links (both desktop and mobile)
-        var navLinks = document.querySelectorAll('.sccf-nav-link, .sccf-nav-panel-item a, .sccf-nav-cta-chip');
+        var navLinks = document.querySelectorAll('.sccf-nav-link, .sccf-nav-panel-item a');
         navLinks.forEach(function(link) {
             link.addEventListener('click', function(e) {
                 var href = this.getAttribute('href');
@@ -213,6 +213,18 @@
                 }
             });
         });
+        
+        // Handle CTA chip separately (it uses data-scroll-target)
+        var ctaChip = document.querySelector('.sccf-nav-cta-chip');
+        if (ctaChip) {
+            ctaChip.addEventListener('click', function(e) {
+                var target = this.getAttribute('data-scroll-target');
+                if (target) {
+                    e.preventDefault();
+                    smoothScrollTo(target);
+                }
+            });
+        }
     }
 
     document.addEventListener('DOMContentLoaded', function () {

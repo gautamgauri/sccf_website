@@ -99,6 +99,8 @@ nav.sccf-nav {
   gap: 0.05rem;
   white-space: nowrap;
   overflow: hidden;
+  min-width: 0;
+  flex-shrink: 1;
 }
 
 .sccf-nav-title {
@@ -144,6 +146,9 @@ nav.sccf-nav {
 
 .sccf-nav-link span {
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .sccf-nav-link--primary {
@@ -216,6 +221,8 @@ nav.sccf-nav {
   letter-spacing: 0.16em;
   cursor: pointer;
   transition: all var(--transition-fast);
+  font-family: var(--font-body);
+  font-weight: 500;
 }
 
 .sccf-nav-cta-chip:hover {
@@ -528,9 +535,17 @@ img {
     display: block;
 }
 
-/* Old navbar styles - hidden since we're using new menu */
-.site-header {
-    display: none;
+/* Old navbar styles - completely hidden since we're using new menu */
+.site-header,
+header.site-header,
+.navbar:not(.sccf-nav),
+.navbar-inner,
+.navbar-links:not(.sccf-nav-links),
+.navbar-links-mobile,
+.navbar-toggle:not(.sccf-nav-toggle),
+.disclaimer-banner {
+    display: none !important;
+    visibility: hidden !important;
 }
 
 .navbar {
